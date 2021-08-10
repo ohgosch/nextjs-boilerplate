@@ -1,11 +1,9 @@
 import { css, FlattenSimpleInterpolation } from 'styled-components';
-
-import pxToRem from 'logic/pxToRem';
+import { rem } from 'polished';
 
 export const mobile = (content: FlattenSimpleInterpolation) => {
   return css`
-    @media (max-width: ${({ theme }) =>
-        pxToRem(theme.resolutions.mobile.max)}) {
+    @media (max-width: ${({ theme }) => rem(theme.resolutions.mobile.max)}) {
       ${content}
     }
   `;
@@ -13,8 +11,7 @@ export const mobile = (content: FlattenSimpleInterpolation) => {
 
 export const mobileTablet = (content: FlattenSimpleInterpolation) => {
   return css`
-    @media (max-width: ${({ theme }) =>
-        pxToRem(theme.resolutions.tablet.max)}) {
+    @media (max-width: ${({ theme }) => rem(theme.resolutions.tablet.max)}) {
       ${content}
     }
   `;
@@ -23,8 +20,8 @@ export const mobileTablet = (content: FlattenSimpleInterpolation) => {
 export const tablet = (content: FlattenSimpleInterpolation) => {
   return css`
     @media (min-width: ${({ theme }) =>
-        pxToRem(theme.resolutions.tablet.min)}) and (max-width: ${({ theme }) =>
-        pxToRem(theme.resolutions.tablet.max)}) {
+        rem(theme.resolutions.tablet.min)}) and (max-width: ${({ theme }) =>
+        rem(theme.resolutions.tablet.max)}) {
       ${content}
     }
   `;
@@ -32,8 +29,7 @@ export const tablet = (content: FlattenSimpleInterpolation) => {
 
 export const tabletDesktop = (content: FlattenSimpleInterpolation) => {
   return css`
-    @media (min-width: ${({ theme }) =>
-        pxToRem(theme.resolutions.tablet.min)}) {
+    @media (min-width: ${({ theme }) => rem(theme.resolutions.tablet.min)}) {
       ${content}
     }
   `;
@@ -41,8 +37,7 @@ export const tabletDesktop = (content: FlattenSimpleInterpolation) => {
 
 export const desktop = (content: FlattenSimpleInterpolation) => {
   return css`
-    @media (min-width: ${({ theme }) =>
-        pxToRem(theme.resolutions.desktop.min)}) {
+    @media (min-width: ${({ theme }) => rem(theme.resolutions.desktop.min)}) {
       ${content}
     }
   `;
