@@ -7,6 +7,16 @@
         "ssr": true,
         "displayName": true
       }
+    ],
+    "inline-react-svg",
+    [
+      "module-resolver",
+      {
+        "root": ["./"],
+        "alias": {
+          "@public": "./public",
+        }
+      }
     ]
   ],
   "env": {
