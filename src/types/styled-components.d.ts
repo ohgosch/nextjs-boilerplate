@@ -1,9 +1,14 @@
+import resolutions from 'visual/resolutions';
+import colors from 'visual/colors';
 import theme from 'visual/theme';
 
-// inferência de tipos
+type Resolutions = typeof resolutions;
+type Colors = typeof colors;
 type Theme = typeof theme;
 
 declare module 'styled-components' {
-  // eslint-disable-next-line @typescript-eslint/no-empty-interface
-  export interface DefaultTheme extends Theme {}
+  export interface DefaultTheme extends Theme {
+    resolutions: Resolutions;
+    colors: Colors;
+  }
 }
