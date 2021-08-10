@@ -1,13 +1,10 @@
-import Head from 'next/head';
-
-import MainTemplate from 'templates/MainTemplate';
+import MainTemplate from 'templates/Main';
+import SEO from 'components/SEO';
 
 const Page = () => {
   return (
     <>
-      <Head>
-        <title>NextJS Boilerplate</title>
-      </Head>
+      <SEO />
       <MainTemplate />
     </>
   );
