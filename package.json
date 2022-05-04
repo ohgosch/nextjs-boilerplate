@@ -10,7 +10,8 @@
     "generate": "yarn plop --plopfile generators/plopfile.js",
     "test:all": "lint-staged",
     "test": "jest --passWithNoTests",
-    "test:watch": "yarn test --watch"
+    "test:watch": "yarn test --watch",
+    "test:update": "jest --updateSnapshot"
   },
   "lint-staged": {
     "src/**/*": [

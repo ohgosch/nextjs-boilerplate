@@ -4,20 +4,24 @@ import nextJest from 'next/jest';
 const createJestConfig = nextJest({ dir: './' });
 
 const config: Config.InitialOptions = {
-  collectCoverage: true,
   moduleDirectories: ['node_modules', '<rootDir>/'],
   testEnvironment: 'jest-environment-jsdom',
-  setupFilesAfterEnv: ['<rootDir>/.jest/setup.ts'],
+  setupFilesAfterEnv: ['<rootDir>/jest.setup.ts'],
   modulePaths: ['src'],
-  transform: { '^.+\\.svg$': 'jest-svg-transformer' },
-  // moduleNameMapper: {
-  //   '\\.svg': require.resolve(`./__mocks__/svg.js`),
-  // },
-  collectCoverageFrom: [
-    'src/**/*.ts(x)?',
-    '!src/types/**/*.d.ts',
-    '!src/styles/**/*.ts',
-  ],
 };
 
-export default createJestConfig(config);
+const jestConfig = async () => {
+  const nextJestConfig = await createJestConfig(config)();
+  return {
+    ...nextJestConfig,
+    moduleNameMapper: {
+      // Workaround to put our SVG stub first
+      '.+\\.(jpg|jpeg|png|gif|eot|otf|webp|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$':
+        '<rootDir>/__mocks__/fileMock.ts',
+      '\\.svg$': '<rootDir>/__mocks__/svg.js',
+      ...nextJestConfig.moduleNameMapper,
+    },
+  };
+};
+
+export default jestConfig;

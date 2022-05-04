@@ -19,6 +19,13 @@
       "@public/*": ["../public/*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "svg.d.ts"],
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    "__mocks__/svg.js",
+    "__mocks__/fileMock.js",
+    "__mocks__/styleMock.js"
+  ],
   "exclude": ["node_modules"]
 }
