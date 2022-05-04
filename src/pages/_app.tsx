@@ -1,14 +1,10 @@
-import Head from 'next/head';
 import { ThemeProvider } from 'styled-components';
+import Head from 'next/head';
 
 import { GlobalStyle } from 'visual/styles/GlobalStyle';
 import theme from 'visual/theme';
 
-type AppProps = {
-  Component: React.ComponentType;
-};
-
-const App = ({ Component }: AppProps) => {
+const App = ({ Component, pageProps }) => {
   return (
     <>
       <Head>
@@ -16,7 +12,7 @@ const App = ({ Component }: AppProps) => {
       </Head>
       <ThemeProvider theme={theme}>
         <GlobalStyle />
-        <Component />
+        <Component {...pageProps} />
       </ThemeProvider>
     </>
   );

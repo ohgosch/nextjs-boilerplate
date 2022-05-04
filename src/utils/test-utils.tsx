@@ -1,10 +1,18 @@
-import { render, screen } from '@testing-library/react';
+import { render, RenderOptions } from '@testing-library/react';
 import { ThemeProvider } from 'styled-components';
 import { ReactElement } from 'react';
 
 import theme from 'visual/theme';
 
-const customRender = (ui: ReactElement) =>
-  render(<ThemeProvider theme={theme}>{ui}</ThemeProvider>);
+const AllTheProviders = ({ children }) => (
+  <ThemeProvider theme={theme}>{children}</ThemeProvider>
+);
 
-export { customRender as render, screen };
+const customRender = (
+  ui: ReactElement,
+  options: Omit<RenderOptions, 'wrapper'> = {},
+) => render(ui, { wrapper: AllTheProviders, ...options });
+
+export * from '@testing-library/react';
+
+export { customRender as render };
